@@ -1,0 +1,68 @@
+{% extends 'layout.html' %} {% block body %}
+
+<!--Form Section-->
+<br /><br />
+<h2 style="text-align: center; margin: 0px; color: green">
+  <b>Find out the Most Suitable Crop to Grow in your Field</b>
+</h2>
+<br />
+
+<div style="
+    width: 350px;
+    height: 50rem;
+    margin: 0px auto;
+    color: green;
+    border-radius: 25px;
+    padding: 10px 10px;
+  ">
+  <form method="POST" action="{{ url_for('crop_prediction') }}">
+    <div class="container shadow m-3 p-3">
+      <div class="form-group">
+        <label for="cod" style="font-size: 17px"><b>COD</b></label>
+        <input type="number" class="form-control" id="cod" name="cod"
+          placeholder="Enter the value (example:50)" style="font-weight: bold" required />
+      </div>
+      <div class="form-group">
+        <label for="ammonia" style="font-size: 17px"><b>Ammonia</b></label>
+        <input type="number" class="form-control" id="ammonia" name="ammonia"
+          placeholder="Enter the value (example:50)" style="font-weight: bold" required />
+      </div>
+
+      <div class="form-group">
+        <label for="salinity" style="font-size: 17px"><b>Salinity</b></label>
+        <input type="number" class="form-control" id="salinity" name="salinity"
+          placeholder="Enter the value (example:50)" style="font-weight: bold" required />
+      </div>
+      <div class="form-group">
+        <label for="ph" style="font-size: 17px"><b>ph level</b></label>
+        <input type="number" step="0.01" class="form-control" id="ph" name="ph" placeholder="Enter the value"
+          style="font-weight: bold" required />
+      </div>
+      <div class="form-group">
+        <label for="tds" style="font-size: 17px"><b>TDS</b></label>
+        <input type="number" step="0.01" class="form-control" id="tds" name="tds"
+          placeholder="Enter the value" style="font-weight: bold" required />
+      </div>
+      <div class="form-group">
+        <label for="State" style="font-size: 17px "><b>Temperature</b></label>
+        <select onchange="print_city('state', this.selectedIndex);" id="sts" name="stt" class="form-control"
+          style="font-weight: bold; color: green;" required></select>
+        <br />
+        <label for="City" style="font-size: 17px"><b>Depth(m)</b></label>
+        <select id="state" class="form-control" name="city" style="font-weight: bold; color: green;" required></select>
+        <script language="javascript">
+          print_state("sts");
+        </script>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-success"
+          style="color: white; font-weight: bold; width: 130px; height:50px; border-radius:12px; font-size: 21px;">
+          Predict
+        </button>
+      </div>
+  </form>
+</div>
+</div>
+<!-- Form section -->
+{% endblock %}
